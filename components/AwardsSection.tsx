@@ -7,14 +7,14 @@ export const AwardsSection: React.FC = () => {
   return (
     <section id="awards" className="py-24 md:py-32">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20">
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-sm font-semibold text-white/40 uppercase tracking-widest"
         >
           (3)
         </motion.span>
-        <motion.h2 
+        <motion.h2
           initial={{ x: 50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -26,7 +26,7 @@ export const AwardsSection: React.FC = () => {
 
       <div className="space-y-0">
         {AWARDS.map((award, idx) => (
-          <motion.div 
+          <motion.div
             key={award.id}
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}

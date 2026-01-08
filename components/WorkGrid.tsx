@@ -7,7 +7,7 @@ export const WorkGrid: React.FC = () => {
   return (
     <section id="work" className="py-24 md:py-32">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20 text-right">
-        <motion.h2 
+        <motion.h2
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -15,7 +15,7 @@ export const WorkGrid: React.FC = () => {
         >
           Work
         </motion.h2>
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-sm font-semibold text-white/40 uppercase tracking-widest"
@@ -26,7 +26,7 @@ export const WorkGrid: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
         {PROJECTS.map((project, idx) => (
-          <motion.div 
+          <motion.div
             key={project.id}
             initial={{ y: 60, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -40,13 +40,13 @@ export const WorkGrid: React.FC = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 className="w-full h-full"
               >
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
+                <img
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover grayscale transition-all group-hover:grayscale-0"
                 />
               </motion.div>
-              
+
               <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-start z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="space-y-1">
                   <p className="text-[10px] font-bold uppercase tracking-widest">{project.title}</p>

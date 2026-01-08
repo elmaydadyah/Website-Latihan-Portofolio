@@ -7,7 +7,7 @@ export const JournalGrid: React.FC = () => {
   return (
     <section id="journal" className="py-24 md:py-32">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20 text-right">
-        <motion.h2 
+        <motion.h2
           initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -15,7 +15,7 @@ export const JournalGrid: React.FC = () => {
         >
           Journal
         </motion.h2>
-        <motion.span 
+        <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           className="text-sm font-semibold text-white/40 uppercase tracking-widest"
@@ -26,7 +26,7 @@ export const JournalGrid: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {JOURNAL_ENTRIES.map((entry, idx) => (
-          <motion.div 
+          <motion.div
             key={entry.id}
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -35,9 +35,9 @@ export const JournalGrid: React.FC = () => {
             className="group cursor-pointer"
           >
             <div className="aspect-[4/5] overflow-hidden rounded bg-[#111]">
-              <img 
-                src={entry.image} 
-                alt={entry.title} 
+              <img
+                src={entry.image}
+                alt={entry.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
               />
             </div>
