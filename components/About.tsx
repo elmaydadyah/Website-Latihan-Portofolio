@@ -1,28 +1,57 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const skills = [
   {
-    title: 'Strategy',
-    desc: 'Developing comprehensive brand strategies that form the core identity for her clients. Her work involves deep market research and consumer psychology to define a brand’s unique vision.',
+    title: 'HTML & CSS',
+    desc: 'Able to build well-structured and responsive web layouts using semantic HTML and modern CSS techniques. Familiar with layout systems, basic animations, and styling principles to create clean and user-friendly interfaces.',
     num: '(01)'
   },
   {
-    title: 'Web Design',
-    desc: 'Creates visually engaging and intuitive websites that combine aesthetic appeal with flawless user experience. She is proficient in crafting layouts, selecting typography, and managing visual assets to ensure perfection.',
+    title: 'PHP Basics',
+    desc: 'Has foundational knowledge of PHP for server-side web development, including handling forms, processing data, and connecting applications to databases for simple dynamic functionality.',
     num: '(02)'
   },
   {
-    title: 'Branding',
-    desc: 'Specializes in the visual representation of a brand, developing cohesive and memorable design systems. Her brand design work includes logos, color palettes, and typographic systems.',
+    title: 'JavaScript',
+    desc: 'Capable of using JavaScript to add interactivity and dynamic behavior to web pages. Experienced in handling events, manipulating the DOM, and implementing basic logic to enhance user experience.',
     num: '(03)'
+  },
+  {
+    title: 'C++',
+    desc: 'Possesses a solid understanding of C++ fundamentals, including variables, control structures, functions, and basic data structures. Commonly used for problem-solving, algorithm implementation, and academic programming tasks.',
+    num: '(04)'
+  },
+  {
+    title: 'Figma',
+    desc: 'Skilled in using Figma to design user interfaces and wireframes, focusing on layout consistency, usability, and visual clarity. Comfortable translating design concepts into practical UI components for development.',
+    num: '(05)'
+  },
+  {
+    title: 'MySQL',
+    desc: 'Ability to design, query, and manage relational databases, ensuring efficient data storage and retrieval.',
+    num: '(06)'
+  },
+  {
+    title: 'Microsoft Office',
+    desc: 'Proficient in using productivity tools like Word, Excel, and PowerPoint for professional documentation and data analysis.',
+    num: '(07)'
   }
 ];
 
 export const About: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   return (
-    <section id="about" className="py-24 md:py-32">
+    <section id="about" className="pt-10 pb-10 md:pt-12 md:pb-12">
       <div className="w-full mb-24">
         <motion.div
           initial={{ y: 40, opacity: 0 }}
@@ -32,7 +61,7 @@ export const About: React.FC = () => {
           className="relative w-full"
         >
           {/* Subtle Signature Bullet */}
-          <div className="w-[5px] h-[5px] rounded-full bg-white mb-10 ml-1" />
+          <div className="w-[5px] h-[5px] rounded-full bg-white mb-8 ml-1" />
 
           {/* Headline - Switzer 58px with Indentation */}
           <h3
@@ -42,7 +71,7 @@ export const About: React.FC = () => {
               textIndent: '15vw',
             }}
           >
-            Based in Tokyo, creative director Kaito Ayaka is renowned for her sophisticated and inspired design work. With a keen eye for craftsmanship, she elevates brand identities by blending contemporary style with subtle, thoughtful details.
+            I am an Informatics Engineering student with a strong interest in information technology development and logical problem-solving. Actively engaged in the learning process, I am accustomed to working collaboratively and continuously strive to develop my skills to be well-prepared for contributing in a professional environment.
           </h3>
         </motion.div>
       </div>
@@ -62,13 +91,13 @@ export const About: React.FC = () => {
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 className="flex flex-col md:flex-row md:items-start gap-6 md:gap-16"
               >
-                <h4 className="text-[20px] md:text-[24px] font-bold md:w-64 shrink-0 text-white" style={{ fontFamily: 'Switzer, sans-serif' }}>
+                <h4 className="text-[18px] font-normal md:w-64 shrink-0 text-white" style={{ fontFamily: 'Switzer, sans-serif' }}>
                   {skill.title}
                 </h4>
-                <p className="flex-1 text-[18px] md:text-[21px] text-white font-normal leading-[1.4] tracking-tight" style={{ fontFamily: 'Switzer, sans-serif' }}>
+                <p className="md:max-w-[380px] text-[18px] text-white font-normal leading-[1.4] tracking-tight" style={{ fontFamily: 'Switzer, sans-serif' }}>
                   {skill.desc}
                 </p>
-                <span className="text-[14px] font-mono text-white hidden md:block mt-1">
+                <span className="text-[18px] font-normal text-white hidden md:block mt-1 ml-auto" style={{ fontFamily: 'Switzer, sans-serif' }}>
                   {skill.num}
                 </span>
               </motion.div>
@@ -77,19 +106,18 @@ export const About: React.FC = () => {
         </div>
       </div>
 
-      <motion.div
-        initial={{ scale: 0.98, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="mt-20 md:mt-32 w-full aspect-[16/9] md:h-[80vh] overflow-hidden rounded-lg border border-white/5"
-      >
-        <img
-          src="https://framerusercontent.com/images/eAoMmnrAjemizJd2fWoQsJ29Q.jpeg"
-          alt="Creative space"
-          className="w-full h-full object-cover"
-        />
-      </motion.div>
+      <div ref={containerRef} className="mt-20 md:mt-32 w-full overflow-hidden">
+        <motion.div
+          style={{ scale, opacity }}
+          className="w-full aspect-[4/5] md:aspect-auto md:h-[80vh] overflow-hidden rounded-lg border border-white/5"
+        >
+          <img
+            src="/images/about-profile.png"
+            alt="Elmayda Dyah Irama"
+            className="w-full h-full object-cover object-top"
+          />
+        </motion.div>
+      </div>
     </section>
   );
 };

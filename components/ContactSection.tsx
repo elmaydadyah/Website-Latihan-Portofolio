@@ -4,8 +4,17 @@ import { motion } from 'framer-motion';
 
 export const ContactSection: React.FC = () => {
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="pt-10 pb-10 md:pt-12 md:pb-12">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20">
+        <motion.h2
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-6xl md:text-[210px] font-light leading-none tracking-tighter"
+          style={{ fontFamily: 'Switzer, sans-serif' }}
+        >
+          Contact
+        </motion.h2>
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -13,85 +22,93 @@ export const ContactSection: React.FC = () => {
         >
           (5)
         </motion.span>
-        <motion.h2
-          initial={{ x: 50, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="text-6xl md:text-[8rem] font-light leading-none uppercase tracking-tighter"
-        >
-          Contact
-        </motion.h2>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-20">
-        <div className="space-y-0">
+      <div>
+        <div className="space-y-0 border-t border-[#292929]">
           {[
-            { label: 'Address', value: 'National Museum, 13-9 Uenokoen, Tokyo, JP', code: 'AD' },
-            { label: 'Phone', value: '+1.647.772.5033', code: 'PH', link: 'tel:+16477725033' },
-            { label: 'Email', value: 'kaitoayaka@gmail.com', code: 'EM', link: 'mailto:kaitoayaka@gmail.com' },
-            { label: 'Instagram', value: '@kaitoayakaIG', code: 'IG', link: 'https://instagram.com' }
+            { label: 'Phone', value: '(+62) 896-5510-4030', code: 'PH', link: 'tel:089655104030' },
+            { label: 'Email', value: 'elmayda.dyah18@gmail.com', code: 'EM', link: 'elmayda.dyah18@gmail.com' },
+            { label: 'Instagram', value: '@elmadyra', code: 'IG', link: 'https://www.instagram.com/elmadyra?igsh=M3VtZmxtaXBpeGQ=' }
           ].map((item, idx) => (
             <motion.div
               key={item.label}
-              initial={{ x: -20, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group grid grid-cols-4 py-8 border-t border-[#292929] items-center"
+              className="grid grid-cols-1 md:grid-cols-12 py-8 border-b border-[#292929] items-center group hover:bg-white/5 transition-colors"
             >
-              <span className="text-sm font-semibold text-white/40 uppercase tracking-widest">{item.label}</span>
-              <div className="col-span-2">
+              <div className="md:col-span-3">
+                <span className="text-[18px] font-normal text-white" style={{ fontFamily: 'Switzer, sans-serif' }}>{item.label}</span>
+              </div>
+
+              <div className="md:col-span-7 mt-2 md:mt-0">
                 {item.link ? (
                   <a
                     href={item.link}
-                    className="text-xl md:text-2xl font-light hover:text-blue-600 transition-colors inline-block"
+                    className="text-[18px] font-normal text-white hover:text-blue-600 transition-colors inline-block"
+                    style={{ fontFamily: 'Switzer, sans-serif' }}
                   >
                     {item.value}
                   </a>
                 ) : (
-                  <span className="text-xl md:text-2xl font-light">{item.value}</span>
+                  <span className="text-[18px] font-normal text-white" style={{ fontFamily: 'Switzer, sans-serif' }}>{item.value}</span>
                 )}
               </div>
-              <span className="text-right text-xs font-mono text-white/20">({item.code})</span>
+
+              <div className="md:col-span-2 mt-2 md:mt-0 flex md:justify-end">
+                <span className="text-[18px] font-normal text-white" style={{ fontFamily: 'Switzer, sans-serif' }}>({item.code})</span>
+              </div>
             </motion.div>
           ))}
-          <div className="border-t border-[#292929]"></div>
         </div>
 
-        <motion.form
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 gap-4"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            type="text"
-            placeholder="First Name"
-            className="col-span-1 bg-transparent border border-[#545454] p-6 text-white outline-none focus:border-white transition-colors"
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            className="col-span-1 bg-transparent border border-[#545454] p-6 text-white outline-none focus:border-white transition-colors"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="col-span-2 bg-transparent border border-[#545454] p-6 text-white outline-none focus:border-white transition-colors"
-          />
-          <textarea
-            placeholder="Message"
-            rows={6}
-            className="col-span-2 bg-transparent border border-[#545454] p-6 text-white outline-none focus:border-white transition-colors resize-none"
-          ></textarea>
-          <button
-            type="submit"
-            className="col-span-2 bg-white text-black font-bold uppercase tracking-widest py-6 hover:bg-blue-600 hover:text-white transition-all"
-          >
-            Submit
-          </button>
-        </motion.form>
+        <div className="mt-20">
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input
+                type="text"
+                placeholder="First Name"
+                className="w-full bg-transparent border-[1.5px] border-[#292929] p-4 text-white placeholder-white/40 focus:outline-none focus:border-white transition-colors"
+                style={{ fontFamily: 'Switzer, sans-serif' }}
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="w-full bg-transparent border-[1.5px] border-[#292929] p-4 text-white placeholder-white/40 focus:outline-none focus:border-white transition-colors"
+                style={{ fontFamily: 'Switzer, sans-serif' }}
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full bg-transparent border-[1.5px] border-[#292929] p-4 text-white placeholder-white/40 focus:outline-none focus:border-white transition-colors"
+                style={{ fontFamily: 'Switzer, sans-serif' }}
+              />
+              <input
+                type="tel"
+                placeholder="Phone"
+                className="w-full bg-transparent border-[1.5px] border-[#292929] p-4 text-white placeholder-white/40 focus:outline-none focus:border-white transition-colors"
+                style={{ fontFamily: 'Switzer, sans-serif' }}
+              />
+            </div>
+            <textarea
+              placeholder="Message"
+              rows={8}
+              className="w-full bg-transparent border-[1.5px] border-[#292929] p-4 text-white placeholder-white/40 focus:outline-none focus:border-white transition-colors resize-none"
+              style={{ fontFamily: 'Switzer, sans-serif' }}
+            ></textarea>
+            <button
+              type="submit"
+              className="w-full bg-white text-black font-bold uppercase tracking-widest py-5 hover:bg-gray-200 transition-colors"
+              style={{ fontFamily: 'Switzer, sans-serif' }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );

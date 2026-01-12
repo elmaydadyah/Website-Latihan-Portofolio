@@ -7,6 +7,10 @@ export interface Project {
   date: string;
   client: string;
   image: string;
+  description?: string;
+  scope?: string;
+  collaborators?: string[];
+  extraImages?: string[];
 }
 
 export interface Experience {
@@ -30,4 +34,5 @@ export interface JournalEntry {
   date: string;
   image: string;
   slug: string;
+  link?: string;
 }
